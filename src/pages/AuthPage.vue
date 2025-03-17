@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import {computed, onMounted} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import LoginForm from "@/components/LoginForm.vue";
 import RegisterForm from "@/components/RegisterForm.vue";
@@ -13,6 +13,13 @@ const isLogin = computed(() => route.params.authType === "login");
 const toggleAuth = () => {
   router.push(isLogin.value ? "/auth/register" : "/auth/login");
 };
+
+onMounted(() => {
+  const isAuthenticated = !!localStorage.getItem("token");
+  if (isAuthenticated) {
+    router.push("/home");
+  }
+});
 </script>
 
 <template>

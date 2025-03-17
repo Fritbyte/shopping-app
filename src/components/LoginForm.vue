@@ -14,7 +14,7 @@ const handleLogin = async () => {
     localStorage.setItem("token", response.token);
     localStorage.setItem("user", JSON.stringify(response.user));
     errorMessage.value = null;
-    await router.push("/dashboard");
+    await router.push("/home");
   } catch (error) {
     errorMessage.value = "Ошибка входа. Проверьте данные и попробуйте снова.";
   }
