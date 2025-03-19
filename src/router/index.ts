@@ -20,9 +20,21 @@ const routes = [
         meta: {title: "Главная страница"},
     },
     {
-        path: "/list",
+        path: "/lists",
         component: ShoppingListPage,
         meta: {title: "Лист покупок"},
+        beforeEnter: (to, from, next) => {
+            if (!sessionStorage.getItem("reloadDone")) {
+                sessionStorage.setItem("reloadDone", "true");
+                next();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 50);
+            } else {
+                sessionStorage.removeItem("reloadDone");
+                next();
+            }
+        },
     },
     {
         path: "/admin",
@@ -37,15 +49,15 @@ const routes = [
             {
                 path: "gateway",
                 component: AdminGateway,
-                meta: {title: "Управление категориями"}
-            }
+                meta: {title: "Управление категориями"},
+            },
         ],
     },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 });
 
 router.beforeEach((to, _from, next) => {

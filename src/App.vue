@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import "./assets/main.css";
 import Particles from "@/components/Particles.vue";
+import {user} from "@/store/storeUser";
 </script>
 
 <template>
@@ -10,7 +11,11 @@ import Particles from "@/components/Particles.vue";
       <div class="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
-          <component :is="Component" class="relative z-10 w-full h-full"/>
+          <component
+              :is="Component"
+              :key="$route.fullPath + '_' + (user.id || '')"
+              class="relative z-10 w-full h-full"
+          />
         </transition>
       </router-view>
     </div>

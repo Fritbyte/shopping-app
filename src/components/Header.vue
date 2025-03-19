@@ -47,7 +47,7 @@ const logout = () => {
           after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100">
             Главная
           </router-link>
-          <router-link to="/list"
+          <router-link to="/lists"
                        class="relative text-white text-base font-medium transition-colors duration-200 ml-6
           after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-white
           after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100">

@@ -4,7 +4,6 @@ import type {User} from "../types/auth";
 
 export const createUserApi = (token: string) => {
     if (!token) {
-        console.error("Ошибка: Токен отсутствует!");
         return null;
     }
 
@@ -18,13 +17,11 @@ export const createUserApi = (token: string) => {
 
     return {
         getAll: async (): Promise<User[]> => {
-            console.log("Запрос на получение всех пользователей:", API_ENDPOINTS.USERS.BASE);
             const {data} = await api.get<User[]>(API_ENDPOINTS.USERS.BASE);
             return data;
         },
 
         delete: async (id: number): Promise<void> => {
-            console.log(`Удаление пользователя ${id}`);
             await api.delete(API_ENDPOINTS.USERS.BY_ID(id));
         }
     };

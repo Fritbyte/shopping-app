@@ -12,5 +12,11 @@ export const API_ENDPOINTS = {
     GATEWAYS: {
         BASE: `${API_BASE_URL}/gateways`,
         BY_ID: (id: number) => `${API_BASE_URL}/gateways/${id}`
+    },
+    SHOPPING_LIST: {
+        BASE: `${API_BASE_URL}/shopping-lists`
+    },
+    SHOPPING_ELEMENT: {
+        BASE: `${API_BASE_URL}/purchase-elements`
     }
 } as const
